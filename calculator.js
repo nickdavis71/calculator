@@ -2,6 +2,8 @@ let a = 3;
 let b = 5;
 let operator = '+';
 
+const gridSquares = document.querySelectorAll('#grid-container div');
+
 
 
 function operate(a, b, operator) {

@@ -1,3 +1,35 @@
-html {
-    
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+#calculator-container {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 0 5px 5px rgb(190, 190, 190);
+}
+
+#display-container {
+    flex: 1;   
+}
+
+#button-container {
+    height: 800px;
+    width: 400px;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.clear-button {
+    grid-column: 1 / span 2;
+}
+
+.zero-button {
+    grid-column: 1 / span 2;
 }
