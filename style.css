@@ -30,6 +30,6 @@ body {
     grid-column: 1 / span 2;
 }
 
-.zero-button {
+#zero-button {
     grid-column: 1 / span 2;
 }

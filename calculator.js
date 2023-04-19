@@ -1,10 +1,48 @@
-let a = 3;
-let b = 5;
-let operator = '+';
+let a = '';
+let b = '';
+let operator = '';
 
-const gridSquares = document.querySelectorAll('#grid-container div');
+const displayBox = document.querySelector('.display');
+const buttons = document.querySelectorAll('button');
+const equalButton = document.querySelector('.equal-button')
 
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        setInputVariables(button);
+        displayInput(a, b, operator);
+        if (button.className === 'equal-button') {
+            displayOutput(operate(a, b, operator))
+        };
+//        console.log(a);
+//        console.log(b);
+//       console.log(operator);
+        });
+});
 
+function setInputVariables(button) {
+    console.log(button.className)
+    if (button.className === 'number-button' && operator === '') {
+        a += button.textContent;
+        return a;
+    };    
+    if (button.className === 'operator-button') {
+        operator = button.textContent;
+        return operator;
+    };
+    if (button.className === 'number-button') {
+        b += button.textContent;
+        return b;
+    };
+    return;
+};
+
+function displayInput(a, b, operator) {
+    displayBox.textContent = `${a} ${operator} ${b}`;
+};
+
+function displayOutput(result) {
+    displayBox.textContent = `${result}`;
+};
 
 function operate(a, b, operator) {
     switch (operator) {
@@ -36,5 +74,3 @@ function multiply(a, b) {
 function divide(a, b) {
     return a / b;
 };
-
-console.log(operate(a, b, operator));
