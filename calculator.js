@@ -1,6 +1,7 @@
 let a = '';
 let b = '';
 let operator = '';
+let equationEvaluated = false;
 
 const displayBox = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
@@ -15,7 +16,14 @@ buttons.forEach(button => {
 
 function setInputVariables(button) {
     if (button.className === 'number-button' && operator === '') {
-        return a = (a === operate()) ? a = button.textContent : a += button.textContent;
+        if (equationEvaluated === true) {
+            equationEvaluated = false;
+            a = button.textContent;
+            return a;
+        } else {
+            a += button.textContent;
+            return a;
+        };
     };    
     if (button.className === 'operator-button') {
         operator = button.textContent;
@@ -25,23 +33,34 @@ function setInputVariables(button) {
         b += button.textContent;
         return b;
     };
+    if (button.className === 'clear-button') {
+        a = '';
+        b = '';
+        operator = '';
+    };
     return;
 };
 
 function evaluateEquation (button) {
     if (button.className === 'equal-button') {
-        displayOutput(operate());
-        a = operate();
-        b = '';
-        operator = '';
+        equationEvaluated = true;
+        displayOutput(operate ());
+        setResultAsInput ();
     };
 };
+
+function setResultAsInput () {
+    a = operate ();
+    b = '';
+    operator = '';
+}
 
 function displayInput() {
     displayBox.textContent = `${a} ${operator} ${b}`;
 };
 
 function displayOutput(result) {
+    result = Math.round((result + Number.EPSILON) * 1000) / 1000;
     displayBox.textContent = `${result}`;
 };
 

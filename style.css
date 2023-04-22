@@ -14,15 +14,15 @@ body {
     box-shadow: 0 0 5px 5px rgb(190, 190, 190);
 }
 
-#display-container {
-    flex: 1;   
+.display {
+   min-width: 400px;
+   min-height: 100px;
 }
 
 #button-container {
-    height: 800px;
-    width: 400px;
+    flex: auto;
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
 }
 
