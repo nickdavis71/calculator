@@ -4,26 +4,18 @@ let operator = '';
 
 const displayBox = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
-const equalButton = document.querySelector('.equal-button')
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         setInputVariables(button);
-        displayInput(a, b, operator);
-        if (button.className === 'equal-button') {
-            displayOutput(operate(a, b, operator))
-        };
-//        console.log(a);
-//        console.log(b);
-//       console.log(operator);
+        displayInput();
+        evaluateEquation (button);
         });
 });
 
 function setInputVariables(button) {
-    console.log(button.className)
     if (button.className === 'number-button' && operator === '') {
-        a += button.textContent;
-        return a;
+        return a = (a === operate()) ? a = button.textContent : a += button.textContent;
     };    
     if (button.className === 'operator-button') {
         operator = button.textContent;
@@ -36,7 +28,16 @@ function setInputVariables(button) {
     return;
 };
 
-function displayInput(a, b, operator) {
+function evaluateEquation (button) {
+    if (button.className === 'equal-button') {
+        displayOutput(operate());
+        a = operate();
+        b = '';
+        operator = '';
+    };
+};
+
+function displayInput() {
     displayBox.textContent = `${a} ${operator} ${b}`;
 };
 
@@ -44,33 +45,33 @@ function displayOutput(result) {
     displayBox.textContent = `${result}`;
 };
 
-function operate(a, b, operator) {
+function operate() {
     switch (operator) {
         case '+':
             return add(a, b);
         case '-':
             return subtract(a, b);
-        case '*':
+        case 'x':
             return multiply(a, b);
-        case '/':
+        case '÷':
             return divide(a, b);
         default:
-            return null;
+            return a;
     };
 };
 
-function add(a, b) {
-    return a + b;
+function add() {
+    return +a + +b;
 };
 
-function subtract(a, b) {
+function subtract() {
     return a - b;
 };
 
-function multiply(a, b) {
+function multiply() {
     return a * b;
 };
 
-function divide(a, b) {
+function divide() {
     return a / b;
 };
