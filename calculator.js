@@ -6,15 +6,15 @@ let equationEvaluated = false;
 const displayBox = document.querySelector('.display');
 const buttons = document.querySelectorAll('button');
 
-buttons.forEach(button => {
+buttons.forEach (button => {
     button.addEventListener('click', () => {
-        setInputVariables(button);
-        displayInput();
+        setButtonFunction (button);
+        displayInput ();
         evaluateEquation (button);
         });
 });
 
-function setInputVariables(button) {
+function setButtonFunction (button) {
     if (button.className === 'number-button' && operator === '') {
         if (equationEvaluated === true) {
             equationEvaluated = false;
@@ -32,11 +32,17 @@ function setInputVariables(button) {
     if (button.className === 'number-button') {
         b += button.textContent;
         return b;
+    };    
+    if (button.className === 'sign-button') {
+        changeSign ();
     };
     if (button.className === 'clear-button') {
         a = '';
         b = '';
         operator = '';
+    };
+    if (button.className === 'delete-button') {
+        backSpace ();
     };
     return;
 };
@@ -53,18 +59,38 @@ function setResultAsInput () {
     a = operate ();
     b = '';
     operator = '';
+};
+
+function backSpace () {
+    if (b) { 
+        b = b.slice(0, -1)
+    } else if (operator) {
+        operator = operator.slice(0, -1)
+    } else if (a) { 
+        a = a.slice(0, -1);
+    };
+};
+
+function changeSign () {
+    if (b) { 
+        b = (b === b) ? -b : b;
+        b = b.toString();
+    } else if (a) { 
+        a = (a === a) ? -a : a;
+        a = a.toString();
+    };  
 }
 
-function displayInput() {
+function displayInput () {
     displayBox.textContent = `${a} ${operator} ${b}`;
 };
 
-function displayOutput(result) {
+function displayOutput (result) {
     result = Math.round((result + Number.EPSILON) * 1000) / 1000;
     displayBox.textContent = `${result}`;
 };
 
-function operate() {
+function operate () {
     switch (operator) {
         case '+':
             return add(a, b);
@@ -79,18 +105,18 @@ function operate() {
     };
 };
 
-function add() {
+function add () {
     return +a + +b;
 };
 
-function subtract() {
+function subtract () {
     return a - b;
 };
 
-function multiply() {
+function multiply () {
     return a * b;
 };
 
-function divide() {
+function divide () {
     return a / b;
 };

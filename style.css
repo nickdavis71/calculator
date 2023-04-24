@@ -26,10 +26,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
-.clear-button {
-    grid-column: 1 / span 2;
-}
-
 #zero-button {
     grid-column: 1 / span 2;
 }
