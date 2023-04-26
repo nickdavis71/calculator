@@ -15,6 +15,10 @@ buttons.forEach (button => {
 });
 
 function setButtonFunction (button) {
+    if (button.id === 'decimal-button') {
+        if (b.includes('.')) return;
+        if (a.includes('.') && operator === '') return;
+    };
     if (button.className === 'number-button' && operator === '') {
         if (equationEvaluated === true) {
             equationEvaluated = false;
@@ -79,7 +83,7 @@ function changeSign () {
         a = (a === a) ? -a : a;
         a = a.toString();
     };  
-}
+};
 
 function displayInput () {
     displayBox.textContent = `${a} ${operator} ${b}`;
