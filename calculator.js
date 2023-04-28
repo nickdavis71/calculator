@@ -17,9 +17,9 @@ buttons.forEach (button => {
 function setButtonFunction (button) {
     if (button.id === 'decimal-button') {
         if (b.includes('.')) return;
-        if (a.includes('.') && operator === '') return;
+        if (a.includes('.') && !operator) return;
     };
-    if (button.className === 'number-button' && operator === '') {
+    if (button.className === 'number-button' && !operator) {
         if (equationEvaluated === true) {
             equationEvaluated = false;
             a = button.textContent;
@@ -54,13 +54,13 @@ function setButtonFunction (button) {
 function evaluateEquation (button) {
     if (button.className === 'equal-button') {
         equationEvaluated = true;
-        displayOutput(operate ());
-        setResultAsInput ();
+        result = displayOutput(operate ());
+        setResultAsInput (result);
     };
 };
 
-function setResultAsInput () {
-    a = operate ();
+function setResultAsInput (result) {
+    a = result.toString();
     b = '';
     operator = '';
 };
@@ -89,9 +89,10 @@ function displayInput () {
     displayBox.textContent = `${a} ${operator} ${b}`;
 };
 
-function displayOutput (result) {
-    result = Math.round((result + Number.EPSILON) * 1000) / 1000;
-    displayBox.textContent = `${result}`;
+function displayOutput (operate) {
+    result = `${Math.round((operate + Number.EPSILON) * 1000) / 1000}`;
+    displayBox.textContent = result;
+    return result;
 };
 
 function operate () {

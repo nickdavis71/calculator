@@ -1,31 +1,117 @@
+html {
+    background-color: #00012c;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: white;
+}
+
 body {
     height: 100vh;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #calculator-container {
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 620px;
     width: 400px;
-    background-color: white;
-    box-shadow: 0 0 5px 5px rgb(190, 190, 190);
+    gap: 20px;
+    margin-top: 5%;
 }
 
-.display {
-   min-width: 400px;
-   min-height: 100px;
+.display-container {
+    max-width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 10px;
+    border: 3px solid rgb(255, 255, 255, 0.2);
 }
+
 
 #button-container {
     flex: auto;
     display: grid;
+    gap: 3px;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
 }
 
+.delete-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-button img {
+    height: 40px;
+    width: 40px;
+}
+
+.clear-button img {
+    height: 35px;
+    width: 30px;
+}
+
 #zero-button {
     grid-column: 1 / span 2;
+}
+
+.equal-button {
+    background-color:  rgb(127, 255, 212, 0.8);
+    color: black;
+}
+
+button {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 10%;
+    border: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75)
+}
+
+.equal-button:hover {
+    background-color: rgb(127, 255, 212, 1);
+}
+
+.clear-button:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.operator-button:hover {
+    background-color: rgba(255, 217, 0, 0.795);
+}
+
+
+button:hover {
+    background-color: rgb(255, 255, 255, 0.1);
+    transform: scale(0.95);
+}
+
+#footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 26px;
+}
+
+#footer img {
+    height: 30px;
+    width: 30px;
 }
