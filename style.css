@@ -28,11 +28,12 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 10px;
     font-size: 40px;
+    overflow: hidden;
     border-radius: 10px;
     border: 3px solid rgb(255, 255, 255, 0.2);
 }
-
 
 #button-container {
     flex: auto;
@@ -75,7 +76,7 @@ button {
     background-color: rgb(255, 255, 255, 0.2);
     border-radius: 10%;
     border: none;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75)
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 .equal-button:hover {
@@ -89,7 +90,6 @@ button {
 .operator-button:hover {
     background-color: rgba(255, 217, 0, 0.795);
 }
-
 
 button:hover {
     background-color: rgb(255, 255, 255, 0.1);
